@@ -1,2 +1,2 @@
 # REPLcode
-REPL Coding w/ scripts, templates, examples
+Inline prompting for coding.

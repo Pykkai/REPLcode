@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-codex exec -m gpt-5-codex <<'EOF'
+codex exec -m gpt-5-codex --sandbox workspace-write <<'EOF'
 - find source files in this repository with the tag @codex in comments
 - the comments following the @codex tags are instructions for you
 - instructions end with the comment block or tag @xedoc

@@ -1,20 +1,25 @@
 // Copyright (C) 2026 Brad Shapcott brad@shapcott.com brash@pyyk.ai
 
+// - idempotency
+#ifndef _TEMPLATE_H_
+#define _TEMPLATE_H_
+
 // - the @doxygen tag indicates where doxygen documentation should be provided
 
 // - comments should be point form, they are faster to write and faster
 //   and easier to read; strip verbiage!
 
 // - system includes go here in alpahbetical order
-#include <std.h>
+#include <string>
 
 // - project includes go here in alphabetical order
-#include "style.h"
+// - usually have a types.h as the project's type dictionary
+#include "types.h"
 
 // - pyyka is the project's namespace
 namespace pyyka
 {
-  class Style
+  class ClassName
   {
     // - every private, protected and public section follows the pattern:
     // - member variables in alphabetical order
@@ -31,15 +36,19 @@ namespace pyyka
     // @doxygen
     string my_public_member_variable;
     // @doxygen
-    Style(string &foo);
+    ClassName(string &foo);
     // @doxygen
-    ~Styles();
+    ~ClassName();
     // @doxygen
     string my_public_method(string &s);
     // @doxygen
     static void my_static_method();
+    // @doxygen
+    virtual const string &my_virtual_method() const;
   };
 }
+
+#endif
 
 // - mark the end of file to guard against accidental truncation
 // EOF ************************************************************************

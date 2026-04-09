@@ -7,12 +7,15 @@
 //   with the actual comments
 
 // - system includes go here in alpahbetical order
-#include <std.h>
+#include <filesystem>
+#include <string>
 
 // - project includes go here in alphabetical order
-#include "style.h"
+#include "template.h"
 
 // - any using namespace or namespace = goes here
+namespace fs = std::filesystem;
+using namespace std;
 
 // - the @doxygen tag indicates where doxygen documentation should be provided
 
@@ -35,6 +38,8 @@ namespace
 
 // - note that I prefer using the full scope in defintions rather than wrapping
 //   everything in a namespace pyyka {...}
+// - the order is ctors, dtors, followed by methods in alphabetical order
+//   (easiest to find)
 
 /******************************************************************************
  ** - mark constructors with CTOR
@@ -42,26 +47,26 @@ namespace
  ** - note the reference definitions, the ampersand should be associated with
  **   the variable name, NOT the type
  */
-CTOR pyyka::Style(string &foo): var(foo) {
-  rerturn;
+CTOR pyyka::ClassName::ClassName(string &foo): my_private_member_variable(foo),
+				    my_protected_member_variable(foo),
+				    my_public_member_variable(foo)
+{
+  return;
 }
 
 /******************************************************************************
  ** - destructor marked with DTOR
  ** @doxygen
  */
-DTOR pyyka::Style::~Styles() {
+DTOR pyyka::ClassName::~ClassName() {
   return;
 }
 
 /******************************************************************************
  ** - method template
- ** - virtual methods when first defined are marked with VIRTUAL
- ** - when overridden in a derived class marked with OVERRIDE
- ** @doxygen
  */
-VIRTUAL void pyyka::Style::my_virtual_method(string &s) {
-  return;
+string pyyka::ClassName::my_public_method(string &s) {
+  return s;
 }
 
 /******************************************************************************
@@ -73,8 +78,18 @@ VIRTUAL void pyyka::Style::my_virtual_method(string &s) {
  ** - this prevents duplication and cut & paste coding
  ** @doxygen
  */
-STATIC void pyyka::Style::my_static_method() {
+STATIC void pyyka::ClassName::my_static_method() {
   return;
+}
+
+/******************************************************************************
+ ** - method template
+ ** - virtual methods when first defined are marked with VIRTUAL
+ ** - when overridden in a derived class marked with OVERRIDE
+ ** @doxygen
+ */
+VIRTUAL const string &pyyka::ClassName::my_virtual_method() const {
+  return my_private_member_variable;
 }
 
 // - mark the end of file to guard against accidental truncation
